@@ -119,6 +119,3 @@ class Sushi(qbit):
             subprocess.run(["ffmpeg.exe", "-i", dst_filename, "-i", output_filename.with_suffix('.ass'), "-map", "0", "-map", "1", 
                             "-c", "copy", src_filepath.with_suffix('.sushi.mkv')])
 Nyaa()
-
-#ffmpeg -i "D:\Anime trash\Releases\[Erai-raws] Kanojo Okarishimasu 2nd Season - 01 [480p][Multiple Subtitle][A164E9B4].mkv" -c copy -map 0:s:m:language:por out.ass
-
