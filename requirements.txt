@@ -1,0 +1,5 @@
+beautifulsoup4==4.11.1
+easygui==0.98.3
+python_qbittorrent==0.4.2
+qbittorrent==0.1.6
+requests==2.28.1
