@@ -92,10 +92,9 @@ class qbit(Nyaa):
                     break
 
         if torrents:
-            print(torrents[0])
             self.src_filepath = torrents[0]["save_path"] + torrents[0]["name"]
             print(self.src_filepath)
-            #qb.remove_category("riko")
+            qb.remove_category("riko")
             print("Torrent already completed.")
             Sushi.run(self)
 
