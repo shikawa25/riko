@@ -107,14 +107,16 @@ class Sushi(qbit):
         src_filepath = Path(self.src_filepath)
         dst_filename = Path(easygui.fileopenbox(title="Which file subs should be shifted to?"))
         output_filename = Path(dst_filename.name)
-        if "Erai" not in str(src_filepath): 
+        output_filepath = Path(str(src_filepath.parents[0]) + "/" + str(output_filename))
+        if "Erai" not in str(src_filepath):
             subprocess.run(["sushi.exe", "--src", src_filepath, "--dst", dst_filename, "-o", output_filename.with_suffix('.ass')])
             subprocess.run(["ffmpeg.exe", "-i", dst_filename, "-i", output_filename.with_suffix('.ass'), "-map", "0", "-map", "1", 
-                            "-c", "copy", src_filepath.with_suffix('.sushi.mkv')])
+                            "-c", "copy", output_filepath.with_suffix('.sushi.mkv')])
         else:
-            subprocess.run(["ffmpeg.exe", "-i", src_filepath, "-c", "copy", "-map", "0:s:m:language:por", src_filepath.with_suffix('.ass')])
+            subprocess.run(["ffmpeg.exe", "-i", src_filepath, "-c", "copy", "-map", "0:s:m:language:eng", src_filepath.with_suffix('.ass')])
             subprocess.run(["sushi.exe", "--src", src_filepath, "--dst", dst_filename, "--script", src_filepath.with_suffix('.ass'),
-                           "-o", output_filename.with_suffix('.ass')])
+                            "-o", output_filename.with_suffix('.ass')])
             subprocess.run(["ffmpeg.exe", "-i", dst_filename, "-i", output_filename.with_suffix('.ass'), "-map", "0", "-map", "1", 
-                            "-c", "copy", src_filepath.with_suffix('.sushi.mkv')])
+                            "-c", "copy", output_filepath.with_suffix('.sushi.mkv')])
+        Nyaa()
 Nyaa()
